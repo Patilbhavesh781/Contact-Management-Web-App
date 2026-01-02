@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.form-container, .list-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: green;
+}
