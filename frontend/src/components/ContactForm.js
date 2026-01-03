@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState = {
   name: "",
@@ -11,7 +12,6 @@ const initialState = {
 function ContactForm({ onContactAdded }) {
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState("");
 
   // Validation
   const validate = () => {
@@ -40,20 +40,23 @@ function ContactForm({ onContactAdded }) {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({});
-    setSuccess("");
   };
 
   // Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) {
+      toast.error("Please fix the form errors");
+      return;
+    }
 
     try {
       await axios.post("http://localhost:5000/api/contacts", formData);
-      setSuccess("Contact added successfully 🎉");
+      toast.success("Contact added successfully 🎉");
       setFormData(initialState);
       onContactAdded && onContactAdded();
     } catch (error) {
+      toast.error("Failed to add contact. Try again.");
       console.error(error);
     }
   };
@@ -140,7 +143,7 @@ function ContactForm({ onContactAdded }) {
           />
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <button
           type="submit"
           disabled={!isFormValid}
@@ -152,13 +155,6 @@ function ContactForm({ onContactAdded }) {
         >
           Submit Contact
         </button>
-
-        {/* Success Message */}
-        {success && (
-          <p className="text-center text-green-600 font-medium mt-2">
-            {success}
-          </p>
-        )}
       </form>
     </div>
   );
