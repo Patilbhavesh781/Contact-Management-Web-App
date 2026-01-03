@@ -51,7 +51,7 @@ function ContactForm({ onContactAdded }) {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/contacts", formData);
+      await axios.post("https://contact-management-web-app-production-ecba.up.railway.app/api/contacts", formData);
       toast.success("Contact added successfully 🎉");
       setFormData(initialState);
       onContactAdded && onContactAdded();

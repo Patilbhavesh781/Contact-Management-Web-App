@@ -12,7 +12,7 @@ function App() {
   // Fetch contacts
   const fetchContacts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contacts");
+      const res = await axios.get("https://contact-management-web-app-production-ecba.up.railway.app/api/contacts");
       setContacts(res.data);
     } catch (error) {
       console.error("Error fetching contacts", error);
@@ -24,7 +24,7 @@ function App() {
   // Delete contact
   const deleteContact = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+      await axios.delete(`https://contact-management-web-app-production-ecba.up.railway.app/api/contacts/${id}`);
       setContacts((prev) => prev.filter((c) => c._id !== id));
     } catch (error) {
       console.error("Error deleting contact", error);
