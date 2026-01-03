@@ -9,7 +9,7 @@ connectDB();
 const app = express();
 app.use(cors
   ({
-    origin: "https://contact-management-proj.netlify.app/",
+    origin: "https://contact-management-proj.netlify.app",
     credentials: true,
   }
 ));
