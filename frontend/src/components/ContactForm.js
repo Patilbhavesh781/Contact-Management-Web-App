@@ -51,7 +51,7 @@ function ContactForm({ onContactAdded }) {
     }
 
     try {
-      await axios.post("https://contact-management-web-app-production-ecba.up.railway.app/api/contacts", formData);
+      await axios.post("https://contact-management-app-kappa-five.vercel.app/api/contacts", formData);
       toast.success("Contact added successfully 🎉");
       setFormData(initialState);
       onContactAdded && onContactAdded();
@@ -161,3 +161,4 @@ function ContactForm({ onContactAdded }) {
 }
 
 export default ContactForm;
+
